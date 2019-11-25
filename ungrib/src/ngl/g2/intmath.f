@@ -3,7 +3,7 @@
 
       interface ilog2 
       ! log(x)/log(2)
-      module procedure ilog2_8
+      !module procedure ilog2_8
       module procedure ilog2_4
       module procedure ilog2_2
       module procedure ilog2_1
@@ -11,7 +11,7 @@
 
       interface i1log2
       ! log(x+1)/log(2) unless x=maxint, in which case log(x)/log(2)
-      module procedure i1log2_8
+      !module procedure i1log2_8
       module procedure i1log2_4
       module procedure i1log2_2
       module procedure i1log2_1
@@ -21,17 +21,17 @@
 
       ! ----------------------------------------------------------------
 
-      function i1log2_8(ival)
-      implicit none
-      integer(kind=8), value :: ival
-      integer(kind=8)::i1log2_8
-      integer(kind=8), parameter :: one=1
-      if(ival+one<ival) then
-         i1log2_8=ilog2_8(ival)
-      else
-         i1log2_8=ilog2_8(ival+one)
-      endif
-      end function i1log2_8
+    !  function i1log2_8(ival)
+    !  implicit none
+    !  integer(kind=8), value :: ival
+    !  integer(kind=8)::i1log2_8
+    !  integer(kind=8), parameter :: one=1
+    !  if(ival+one<ival) then
+    !     i1log2_8=ilog2_8(ival)
+    !  else
+    !     i1log2_8=ilog2_8(ival+one)
+    !  endif
+    !  end function i1log2_8
 
       ! ----------------------------------------------------------------
 
@@ -77,48 +77,48 @@
 
       ! ----------------------------------------------------------------
 
-      function ilog2_8(i_in)
-      implicit none
-      integer(kind=8), value :: i_in
-      integer(kind=8)::ilog2_8,i
-      ilog2_8=0
-      i=i_in
-      if(i<=0) return
-      if(iand(i,i-1)/=0) then
+   !   function ilog2_8(i_in)
+   !   implicit none
+   !   integer(kind=8), value :: i_in
+   !   integer(kind=8)::ilog2_8,i
+   !   ilog2_8=0
+   !   i=i_in
+   !   if(i<=0) return
+   !   if(iand(i,i-1)/=0) then
          !write(0,*) 'iand i-1'
-         ilog2_8=1
-      endif
-      if(iand(i,Z'FFFFFFFF00000000')/=0) then
-         ilog2_8=ilog2_8+32
-         i=ishft(i,-32)
+   !      ilog2_8=1
+   !   endif
+   !   if(iand(i,Z'FFFFFFFF00000000')/=0) then
+   !      ilog2_8=ilog2_8+32
+   !      i=ishft(i,-32)
          !write(0,*) 'iand ffffffff',i,ilog2_8
-      endif
-      if(iand(i,Z'00000000FFFF0000')/=0) then
-         ilog2_8=ilog2_8+16
-         i=ishft(i,-16)
+   !   endif
+   !   if(iand(i,Z'00000000FFFF0000')/=0) then
+   !      ilog2_8=ilog2_8+16
+   !      i=ishft(i,-16)
          !write(0,*) 'iand ffff' ,i,ilog2_8
-      endif
-      if(iand(i,Z'000000000000FF00')/=0) then
-         ilog2_8=ilog2_8+8
-         i=ishft(i,-8)
+   !   endif
+   !   if(iand(i,Z'000000000000FF00')/=0) then
+   !      ilog2_8=ilog2_8+8
+   !      i=ishft(i,-8)
          !write(0,*) 'iand ff',i,ilog2_8
-      endif
-      if(iand(i,Z'00000000000000F0')/=0) then
-         ilog2_8=ilog2_8+4
-         i=ishft(i,-4)
+   !   endif
+   !   if(iand(i,Z'00000000000000F0')/=0) then
+   !      ilog2_8=ilog2_8+4
+   !      i=ishft(i,-4)
          !write(0,*) 'iand f',i,ilog2_8
-      endif
-      if(iand(i,Z'000000000000000C')/=0) then
-         ilog2_8=ilog2_8+2
-         i=ishft(i,-2)
+   !   endif
+   !   if(iand(i,Z'000000000000000C')/=0) then
+   !      ilog2_8=ilog2_8+2
+   !      i=ishft(i,-2)
          !write(0,*) 'iand c',i,ilog2_8
-      endif
-      if(iand(i,Z'0000000000000002')/=0) then
-         ilog2_8=ilog2_8+1
-         i=ishft(i,-1)
+   !   endif
+   !   if(iand(i,Z'0000000000000002')/=0) then
+   !      ilog2_8=ilog2_8+1
+   !      i=ishft(i,-1)
          !write(0,*) 'iand 2',i,ilog2_8
-      endif
-      end function ilog2_8
+   !   endif
+   !   end function ilog2_8
 
       ! ----------------------------------------------------------------
 
