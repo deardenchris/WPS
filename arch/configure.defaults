@@ -124,7 +124,7 @@ ARFLAGS             =
 CC_TOOLS            = 
 
 ########################################################################################################################
-#ARCH    Linux i486 i586 i686, gfortran   # serial serial_NO_GRIB2 dmpar dmpar_NO_GRIB2
+#ARCH    Linux armv7l, gfortran   # serial serial_NO_GRIB2 dmpar dmpar_NO_GRIB2
 #
 COMPRESSION_LIBS    = CONFIGURE_COMP_L
 COMPRESSION_INC     = CONFIGURE_COMP_I
